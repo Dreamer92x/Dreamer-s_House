@@ -83,6 +83,12 @@
             width: 40px;
             height: 40px;
             pointer-events: none;
+            transition: fill 0.2s;
+        }
+        .shape svg rect,
+        .shape svg circle,
+        .shape svg polygon {
+            transition: fill 0.2s;
         }
         .shape-right { right: 2px; }
         .shape-left { left: 2px; }
@@ -157,15 +163,33 @@
         let stageCompleted = false;
         const expectedSequence = ['left-diamond', 'right-triangle', 'right-circle', 'left-square'];
         const stageMessage = document.getElementById('stageMessage');
+        let animationTimeout = null;
+
+        function animateShape(shape) {
+            const svg = shape.querySelector('svg');
+            if (!svg) return;
+            const elements = svg.querySelectorAll('rect, circle, polygon');
+            const originalColors = [];
+            elements.forEach(el => {
+                originalColors.push(el.getAttribute('fill'));
+                el.setAttribute('fill', '#333333');
+            });
+            if (animationTimeout) clearTimeout(animationTimeout);
+            animationTimeout = setTimeout(() => {
+                elements.forEach((el, index) => {
+                    el.setAttribute('fill', originalColors[index] || 'white');
+                });
+                animationTimeout = null;
+            }, 2000);
+        }
 
         document.querySelectorAll('.shape').forEach(shape => {
             shape.addEventListener('click', function(e) {
                 if (stageCompleted) return;
                 const id = this.dataset.id;
-                console.log('Нажата фигура:', id, 'Шаг:', step);
+                animateShape(this);
                 if (id === expectedSequence[step]) {
                     step++;
-                    console.log('Правильно! Шаг теперь:', step);
                     if (step === expectedSequence.length) {
                         stageCompleted = true;
                         stageMessage.classList.add('show');
@@ -180,7 +204,6 @@
                 } else {
                     step = 0;
                     stageMessage.classList.remove('show');
-                    console.log('Неверно, сброс шага');
                 }
             });
         });
