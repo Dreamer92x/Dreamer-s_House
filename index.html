@@ -25,17 +25,26 @@
             color: #ffffff;
             font-size: 22px;
             line-height: 1.8;
-            margin-bottom: 60px;
+            margin-bottom: 40px;
             font-weight: 400;
             letter-spacing: 0.3px;
             text-shadow: 0 0 8px rgba(255,255,255,0.05);
+        }
+        .hidden-hint {
+            color: #0a0a0a;
+            font-size: 18px;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 2px;
+            margin: 10px 0;
+            user-select: none;
+            background: transparent;
         }
         .bottom-text {
             color: #ffffff;
             font-size: 18px;
             line-height: 1.6;
             max-width: 700px;
-            margin: 0 auto 30px;
+            margin: 30px auto 30px;
             font-weight: 300;
             letter-spacing: 0.2px;
             text-shadow: 0 0 6px rgba(255,255,255,0.04);
@@ -46,7 +55,14 @@
             font-weight: bold;
             letter-spacing: 6px;
             margin-top: 40px;
+            opacity: 0;
+            transition: opacity 0.5s, transform 0.5s;
+            transform: scale(0.8);
             text-shadow: 0 0 30px rgba(255,255,255,0.5);
+        }
+        .stage-message.show {
+            opacity: 1;
+            transform: scale(1);
         }
         .shape {
             position: absolute;
@@ -56,6 +72,11 @@
             cursor: pointer;
             -webkit-tap-highlight-color: transparent;
             outline: none;
+            transition: opacity 0.5s;
+        }
+        .shape.hidden {
+            opacity: 0;
+            pointer-events: none;
         }
         .shape svg {
             display: block;
@@ -64,29 +85,30 @@
         }
         .shape-right { right: 2px; }
         .shape-left { left: 2px; }
-        .s1 { top: 14%; }
+        .s1 { top: 16%; }
         .s2 { top: 20%; }
-        .s3 { top: 26%; }
-        .s4 { top: 32%; }
+        .s3 { top: 24%; }
+        .s4 { top: 28%; }
         @media (max-width: 700px) {
             .shape svg { width: 30px; height: 30px; }
             .shape-right { right: 2px; }
             .shape-left { left: 2px; }
             .main-text { font-size: 18px; }
             .bottom-text { font-size: 15px; }
-            .s1 { top: 12%; }
+            .hidden-hint { font-size: 14px; }
+            .s1 { top: 14%; }
             .s2 { top: 18%; }
-            .s3 { top: 24%; }
-            .s4 { top: 30%; }
+            .s3 { top: 22%; }
+            .s4 { top: 26%; }
         }
         @media (max-width: 480px) {
             .shape svg { width: 22px; height: 22px; }
             .shape-right { right: 1px; }
             .shape-left { left: 1px; }
-            .s1 { top: 10%; }
+            .s1 { top: 12%; }
             .s2 { top: 16%; }
-            .s3 { top: 22%; }
-            .s4 { top: 28%; }
+            .s3 { top: 20%; }
+            .s4 { top: 24%; }
         }
     </style>
 </head>
@@ -121,6 +143,7 @@
             Надеюсь вы оцените сайт и надеюсь всё вам тут понравится.<br>
             С уважением Dreamer
         </div>
+        <div class="hidden-hint">1.Лев.Ро  2.Прав.Тр 3.Прав.Кр 4.Лев.Кв</div>
         <div class="bottom-text">
             Я как уже понятно Dreamer, или мечтатель или же Миша.<br>
             Я просто хочу сделать сайт и оставить какой нибудь след моим знакомым.<br>
@@ -138,7 +161,7 @@
             const originalColors = [];
             children.forEach(el => {
                 originalColors.push(el.getAttribute('fill'));
-                el.setAttribute('fill', '#111111');
+                el.setAttribute('fill', '#333333');
             });
             setTimeout(() => {
                 children.forEach((el, index) => {
@@ -165,8 +188,10 @@
                     step++;
                     if (step === expectedSequence.length) {
                         stageCompleted = true;
-                        stageMessage.style.opacity = '1';
-                        stageMessage.style.transform = 'scale(1)';
+                        stageMessage.classList.add('show');
+                        document.querySelectorAll('.shape').forEach(el => {
+                            el.classList.add('hidden');
+                        });
                         setTimeout(() => {
                             stageMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
                         }, 300);
@@ -174,8 +199,7 @@
                     }
                 } else {
                     step = 0;
-                    stageMessage.style.opacity = '0';
-                    stageMessage.style.transform = 'scale(0.8)';
+                    stageMessage.classList.remove('show');
                 }
             });
         });
