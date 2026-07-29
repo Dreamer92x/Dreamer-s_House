@@ -46,14 +46,7 @@
             font-weight: bold;
             letter-spacing: 6px;
             margin-top: 40px;
-            opacity: 0;
-            transition: opacity 0.5s, transform 0.5s;
-            transform: scale(0.8);
             text-shadow: 0 0 30px rgba(255,255,255,0.5);
-        }
-        .stage-message.show {
-            opacity: 1;
-            transform: scale(1);
         }
         .shape {
             position: absolute;
@@ -69,31 +62,31 @@
             width: 40px;
             height: 40px;
         }
-        .shape-right { right: 5px; }
-        .shape-left { left: 5px; }
-        .s1 { top: 12%; }
-        .s2 { top: 24%; }
-        .s3 { top: 36%; }
-        .s4 { top: 48%; }
+        .shape-right { right: 2px; }
+        .shape-left { left: 2px; }
+        .s1 { top: 14%; }
+        .s2 { top: 20%; }
+        .s3 { top: 26%; }
+        .s4 { top: 32%; }
         @media (max-width: 700px) {
             .shape svg { width: 30px; height: 30px; }
-            .shape-right { right: 4px; }
-            .shape-left { left: 4px; }
+            .shape-right { right: 2px; }
+            .shape-left { left: 2px; }
             .main-text { font-size: 18px; }
             .bottom-text { font-size: 15px; }
-            .s1 { top: 10%; }
-            .s2 { top: 22%; }
-            .s3 { top: 34%; }
-            .s4 { top: 46%; }
+            .s1 { top: 12%; }
+            .s2 { top: 18%; }
+            .s3 { top: 24%; }
+            .s4 { top: 30%; }
         }
         @media (max-width: 480px) {
             .shape svg { width: 22px; height: 22px; }
-            .shape-right { right: 3px; }
-            .shape-left { left: 3px; }
-            .s1 { top: 8%; }
-            .s2 { top: 20%; }
-            .s3 { top: 32%; }
-            .s4 { top: 44%; }
+            .shape-right { right: 1px; }
+            .shape-left { left: 1px; }
+            .s1 { top: 10%; }
+            .s2 { top: 16%; }
+            .s3 { top: 22%; }
+            .s4 { top: 28%; }
         }
     </style>
 </head>
@@ -145,7 +138,7 @@
             const originalColors = [];
             children.forEach(el => {
                 originalColors.push(el.getAttribute('fill'));
-                el.setAttribute('fill', '#1a1a1a');
+                el.setAttribute('fill', '#111111');
             });
             setTimeout(() => {
                 children.forEach((el, index) => {
@@ -172,7 +165,8 @@
                     step++;
                     if (step === expectedSequence.length) {
                         stageCompleted = true;
-                        stageMessage.classList.add('show');
+                        stageMessage.style.opacity = '1';
+                        stageMessage.style.transform = 'scale(1)';
                         setTimeout(() => {
                             stageMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
                         }, 300);
@@ -180,7 +174,8 @@
                     }
                 } else {
                     step = 0;
-                    stageMessage.classList.remove('show');
+                    stageMessage.style.opacity = '0';
+                    stageMessage.style.transform = 'scale(0.8)';
                 }
             });
         });
