@@ -20,6 +20,11 @@
             margin: 60px auto 0;
             position: relative;
             z-index: 1;
+            transition: opacity 0.8s ease;
+        }
+        .container.fade-out {
+            opacity: 0;
+            pointer-events: none;
         }
         .main-text {
             color: #ffffff;
@@ -30,16 +35,15 @@
             letter-spacing: 0.3px;
             text-shadow: 0 0 8px rgba(255,255,255,0.05);
         }
-        .invisible-text {
-            color: #fafafa;
+        .selectable-hidden {
+            color: transparent;
             font-size: 18px;
             font-family: 'Courier New', monospace;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             margin: 10px 0;
-            user-select: none;
+            user-select: text;
             background: transparent;
-            text-shadow: 0 0 2px rgba(255,255,255,0.03);
-            opacity: 0.15;
+            text-shadow: none;
             line-height: 1.6;
         }
         .bottom-text {
@@ -78,14 +82,15 @@
             font-weight: 300;
             text-shadow: 0 0 6px rgba(255,255,255,0.05);
         }
-        .hidden-message {
-            color: transparent;
+        .hidden-password {
+            color: #fafafa;
             font-size: 18px;
             line-height: 1.6;
             margin-top: 10px;
-            user-select: text;
+            user-select: none;
             background: transparent;
-            text-shadow: none;
+            text-shadow: 0 0 2px rgba(255,255,255,0.03);
+            opacity: 0.15;
             font-family: 'Courier New', monospace;
         }
         .shape {
@@ -125,9 +130,9 @@
             .shape-left { left: 2px; }
             .main-text { font-size: 18px; }
             .bottom-text { font-size: 15px; }
-            .invisible-text { font-size: 14px; }
+            .selectable-hidden { font-size: 14px; }
+            .hidden-password { font-size: 14px; }
             .fake-empty { font-size: 17px; }
-            .hidden-message { font-size: 15px; }
             .spacer { height: 80px; }
             .s1 { top: 20%; }
             .s2 { top: 28%; }
@@ -171,13 +176,13 @@
     <div class="shape shape-left s4" data-id="left-circle">
         <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="white"/></svg>
     </div>
-    <div class="container">
+    <div class="container" id="mainContainer">
         <div class="main-text">
             Привет, возможно вам это скинул мой друг.<br>
             Надеюсь вы оцените сайт и надеюсь всё вам тут понравится.<br>
             С уважением Dreamer
         </div>
-        <div class="invisible-text">1.Лев.Ро  2.Прав.Тр 3.Прав.Кр 4.Лев.Кв.</div>
+        <div class="selectable-hidden">Некоторые буквы порой очень боятся света. Думаю этот проект будет интересным</div>
         <div class="bottom-text">
             Я как уже понятно Dreamer, или мечтатель или же Миша.<br>
             Я просто хочу сделать сайт и оставить какой нибудь след моим знакомым.<br>
@@ -186,13 +191,14 @@
         <div class="stage-message" id="stageMessage">Пройден 1 этап</div>
         <div class="spacer"></div>
         <div class="fake-empty">Тут ничего нету</div>
-        <div class="hidden-message">Некоторые буквы порой очень боятся света. Думаю этот проект будет интересным</div>
+        <div class="hidden-password">1.Лев.Ро  2.Прав.Тр 3.Прав.Кр 4.Лев.Кв.</div>
     </div>
     <script>
         let step = 0;
         let stageCompleted = false;
         const expectedSequence = ['left-diamond', 'right-triangle', 'right-circle', 'left-square'];
         const stageMessage = document.getElementById('stageMessage');
+        const mainContainer = document.getElementById('mainContainer');
         let animationTimeouts = {};
 
         function animateShape(shape) {
@@ -227,6 +233,7 @@
                         document.querySelectorAll('.shape').forEach(el => {
                             el.classList.add('hidden');
                         });
+                        mainContainer.classList.add('fade-out');
                         setTimeout(() => {
                             stageMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
                         }, 300);
