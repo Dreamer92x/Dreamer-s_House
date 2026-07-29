@@ -137,6 +137,7 @@
     </div>
     <script>
         let locked = false;
+        let stageCompleted = false;
         function darkenShape(svg) {
             if (locked) return;
             locked = true;
@@ -144,14 +145,14 @@
             const originalColors = [];
             children.forEach(el => {
                 originalColors.push(el.getAttribute('fill'));
-                el.setAttribute('fill', '#555555');
+                el.setAttribute('fill', '#1a1a1a');
             });
             setTimeout(() => {
                 children.forEach((el, index) => {
                     el.setAttribute('fill', originalColors[index] || 'white');
                 });
                 locked = false;
-            }, 1500);
+            }, 2000);
         }
         document.querySelectorAll('.shape svg').forEach(svg => {
             svg.addEventListener('click', function(e) {
@@ -164,11 +165,13 @@
         const stageMessage = document.getElementById('stageMessage');
         document.querySelectorAll('.shape').forEach(shape => {
             shape.addEventListener('click', function(e) {
+                if (stageCompleted) return;
                 const id = this.dataset.id;
                 if (!id) return;
                 if (id === expectedSequence[step]) {
                     step++;
                     if (step === expectedSequence.length) {
+                        stageCompleted = true;
                         stageMessage.classList.add('show');
                         setTimeout(() => {
                             stageMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
