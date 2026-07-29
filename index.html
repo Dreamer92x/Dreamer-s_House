@@ -31,14 +31,15 @@
             text-shadow: 0 0 8px rgba(255,255,255,0.05);
         }
         .invisible-text {
-            color: transparent;
+            color: #ffffff;
             font-size: 18px;
             font-family: 'Courier New', monospace;
             letter-spacing: 2px;
             margin: 10px 0;
-            user-select: text;
+            user-select: none;
             background: transparent;
-            text-shadow: none;
+            text-shadow: 0 0 2px rgba(255,255,255,0.03);
+            opacity: 0.99;
             line-height: 1.6;
         }
         .bottom-text {
@@ -63,6 +64,24 @@
         }
         .stage-message.show {
             opacity: 1;
+        }
+        .fake-empty {
+            font-size: 20px;
+            color: #ffffff;
+            margin-top: 80px;
+            letter-spacing: 2px;
+            font-weight: 300;
+            text-shadow: 0 0 6px rgba(255,255,255,0.05);
+        }
+        .hidden-message {
+            color: transparent;
+            font-size: 18px;
+            line-height: 1.6;
+            margin-top: 10px;
+            user-select: text;
+            background: transparent;
+            text-shadow: none;
+            font-family: 'Courier New', monospace;
         }
         .shape {
             position: absolute;
@@ -102,6 +121,8 @@
             .main-text { font-size: 18px; }
             .bottom-text { font-size: 15px; }
             .invisible-text { font-size: 14px; }
+            .fake-empty { font-size: 17px; margin-top: 60px; }
+            .hidden-message { font-size: 15px; }
             .s1 { top: 20%; }
             .s2 { top: 28%; }
             .s3 { top: 36%; }
@@ -156,6 +177,9 @@
             Сайт будет обновляться и буду добавлять разные фотографии из жизни и даже видео.<br> Надеюсь вам тут всё понравится
         </div>
         <div class="stage-message" id="stageMessage">Пройден 1 этап</div>
+        
+        <div class="fake-empty">Тут ничего нету</div>
+        <div class="hidden-message">Некоторые буквы порой очень боятся света. Думаю этот проект будет интересным</div>
     </div>
     <script>
         let step = 0;
