@@ -11,9 +11,9 @@
             min-height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             font-family: 'Georgia', 'Times New Roman', serif;
-            padding: 20px;
+            padding: 20px 20px 200px 20px;
             position: relative;
         }
         .container {
@@ -22,12 +22,13 @@
             text-align: center;
             position: relative;
             z-index: 1;
+            margin-top: 60px;
         }
         .main-text {
             color: #ffffff;
             font-size: 22px;
             line-height: 1.8;
-            margin-bottom: 40px;
+            margin-bottom: 60px;
             font-weight: 400;
             letter-spacing: 0.3px;
             text-shadow: 0 0 8px rgba(255,255,255,0.05);
@@ -37,10 +38,22 @@
             font-size: 18px;
             line-height: 1.6;
             max-width: 700px;
-            margin: 0 auto;
+            margin: 0 auto 30px;
             font-weight: 300;
             letter-spacing: 0.2px;
             text-shadow: 0 0 6px rgba(255,255,255,0.04);
+        }
+        .stage-message {
+            color: #ffffff;
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 4px;
+            margin-top: 40px;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+        .stage-message.show {
+            opacity: 1;
         }
         .shape {
             position: fixed;
@@ -48,7 +61,6 @@
             pointer-events: auto;
             user-select: none;
             cursor: pointer;
-            transition: none;
         }
         .shape svg {
             display: block;
@@ -61,7 +73,6 @@
         .s2 { top: 35%; }
         .s3 { top: 55%; }
         .s4 { top: 75%; }
-
         @media (max-width: 700px) {
             .shape svg { width: 30px; height: 30px; }
             .shape-right { right: 4px; }
@@ -85,33 +96,30 @@
     </style>
 </head>
 <body>
-
-    <div class="shape shape-right s1">
+    <div class="shape shape-right s1" data-id="right-square">
         <svg viewBox="0 0 100 100"><rect x="10" y="10" width="80" height="80" fill="white"/></svg>
     </div>
-    <div class="shape shape-right s2">
+    <div class="shape shape-right s2" data-id="right-circle">
         <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="white"/></svg>
     </div>
-    <div class="shape shape-right s3">
+    <div class="shape shape-right s3" data-id="right-diamond">
         <svg viewBox="0 0 100 100"><polygon points="50,10 90,50 50,90 10,50" fill="white"/></svg>
     </div>
-    <div class="shape shape-right s4">
+    <div class="shape shape-right s4" data-id="right-triangle">
         <svg viewBox="0 0 100 100"><polygon points="50,10 90,90 10,90" fill="white"/></svg>
     </div>
-
-    <div class="shape shape-left s1">
+    <div class="shape shape-left s1" data-id="left-diamond">
         <svg viewBox="0 0 100 100"><polygon points="50,10 90,50 50,90 10,50" fill="white"/></svg>
     </div>
-    <div class="shape shape-left s2">
+    <div class="shape shape-left s2" data-id="left-triangle">
         <svg viewBox="0 0 100 100"><polygon points="50,10 90,90 10,90" fill="white"/></svg>
     </div>
-    <div class="shape shape-left s3">
+    <div class="shape shape-left s3" data-id="left-square">
         <svg viewBox="0 0 100 100"><rect x="10" y="10" width="80" height="80" fill="white"/></svg>
     </div>
-    <div class="shape shape-left s4">
+    <div class="shape shape-left s4" data-id="left-circle">
         <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="white"/></svg>
     </div>
-
     <div class="container">
         <div class="main-text">
             Привет, возможно вам это скинул мой друг.<br>
@@ -121,28 +129,51 @@
         <div class="bottom-text">
             Я как уже понятно Dreamer, или мечтатель или же Миша.<br>
             Я просто хочу сделать сайт и оставить какой нибудь след моим знакомым.<br>
-            Сайт будет обновляться и буду добавлять разные фотографии из жизни и даже видео. Надеюсь вам тут всё понравится
+            Сайт будет обновляться и буду добавлять разные фотографии из жизни и даже видео.<br> Надеюсь вам тут всё понравится
         </div>
+        <div class="stage-message" id="stageMessage">1 этап</div>
     </div>
-
     <script>
         let locked = false;
-
         function darkenShape(svg) {
             if (locked) return;
             locked = true;
-            const originalFill = svg.getAttribute('fill');
-            svg.setAttribute('fill', '#555555');
+            const children = svg.querySelectorAll('rect, circle, polygon, path, ellipse');
+            const originalColors = [];
+            children.forEach(el => {
+                originalColors.push(el.getAttribute('fill'));
+                el.setAttribute('fill', '#555555');
+            });
             setTimeout(() => {
-                svg.setAttribute('fill', originalFill || 'white');
+                children.forEach((el, index) => {
+                    el.setAttribute('fill', originalColors[index] || 'white');
+                });
                 locked = false;
             }, 1500);
         }
-
         document.querySelectorAll('.shape svg').forEach(svg => {
             svg.addEventListener('click', function(e) {
                 darkenShape(this);
                 e.stopPropagation();
+            });
+        });
+        const expectedSequence = ['left-diamond', 'right-triangle', 'right-circle', 'left-square'];
+        let step = 0;
+        const stageMessage = document.getElementById('stageMessage');
+        document.querySelectorAll('.shape').forEach(shape => {
+            shape.addEventListener('click', function(e) {
+                const id = this.dataset.id;
+                if (!id) return;
+                if (id === expectedSequence[step]) {
+                    step++;
+                    if (step === expectedSequence.length) {
+                        stageMessage.classList.add('show');
+                        step = 0;
+                    }
+                } else {
+                    step = 0;
+                    stageMessage.classList.remove('show');
+                }
             });
         });
     </script>
