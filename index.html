@@ -66,7 +66,7 @@
         }
         .shape {
             position: absolute;
-            z-index: 0;
+            z-index: 10;
             pointer-events: auto;
             user-select: none;
             cursor: pointer;
@@ -82,6 +82,7 @@
             display: block;
             width: 40px;
             height: 40px;
+            pointer-events: none;
         }
         .shape-right { right: 2px; }
         .shape-left { left: 2px; }
@@ -152,40 +153,19 @@
         <div class="stage-message" id="stageMessage">Пройден 1 этап</div>
     </div>
     <script>
-        let locked = false;
-        let stageCompleted = false;
-        function darkenShape(svg) {
-            if (locked) return;
-            locked = true;
-            const children = svg.querySelectorAll('rect, circle, polygon, path, ellipse');
-            const originalColors = [];
-            children.forEach(el => {
-                originalColors.push(el.getAttribute('fill'));
-                el.setAttribute('fill', '#333333');
-            });
-            setTimeout(() => {
-                children.forEach((el, index) => {
-                    el.setAttribute('fill', originalColors[index] || 'white');
-                });
-                locked = false;
-            }, 2000);
-        }
-        document.querySelectorAll('.shape svg').forEach(svg => {
-            svg.addEventListener('click', function(e) {
-                darkenShape(this);
-                e.stopPropagation();
-            });
-        });
-        const expectedSequence = ['left-diamond', 'right-triangle', 'right-circle', 'left-square'];
         let step = 0;
+        let stageCompleted = false;
+        const expectedSequence = ['left-diamond', 'right-triangle', 'right-circle', 'left-square'];
         const stageMessage = document.getElementById('stageMessage');
+
         document.querySelectorAll('.shape').forEach(shape => {
             shape.addEventListener('click', function(e) {
                 if (stageCompleted) return;
                 const id = this.dataset.id;
-                if (!id) return;
+                console.log('Нажата фигура:', id, 'Шаг:', step);
                 if (id === expectedSequence[step]) {
                     step++;
+                    console.log('Правильно! Шаг теперь:', step);
                     if (step === expectedSequence.length) {
                         stageCompleted = true;
                         stageMessage.classList.add('show');
@@ -200,6 +180,7 @@
                 } else {
                     step = 0;
                     stageMessage.classList.remove('show');
+                    console.log('Неверно, сброс шага');
                 }
             });
         });
