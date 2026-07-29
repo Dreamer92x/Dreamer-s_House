@@ -9,9 +9,6 @@
         body {
             background: #0a0a0a;
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
             font-family: 'Georgia', 'Times New Roman', serif;
             padding: 20px 20px 200px 20px;
             position: relative;
@@ -20,9 +17,9 @@
             max-width: 800px;
             width: 100%;
             text-align: center;
+            margin: 60px auto 0;
             position: relative;
             z-index: 1;
-            margin-top: 60px;
         }
         .main-text {
             color: #ffffff;
@@ -56,42 +53,44 @@
             opacity: 1;
         }
         .shape {
-            position: fixed;
+            position: absolute;
             z-index: 0;
             pointer-events: auto;
             user-select: none;
             cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+            outline: none;
         }
         .shape svg {
             display: block;
             width: 40px;
             height: 40px;
         }
-        .shape-right { right: 6px; }
-        .shape-left { left: 6px; }
-        .s1 { top: 15%; }
-        .s2 { top: 35%; }
-        .s3 { top: 55%; }
-        .s4 { top: 75%; }
+        .shape-right { right: 20px; }
+        .shape-left { left: 20px; }
+        .s1 { top: 10%; }
+        .s2 { top: 28%; }
+        .s3 { top: 46%; }
+        .s4 { top: 64%; }
         @media (max-width: 700px) {
             .shape svg { width: 30px; height: 30px; }
-            .shape-right { right: 4px; }
-            .shape-left { left: 4px; }
+            .shape-right { right: 12px; }
+            .shape-left { left: 12px; }
             .main-text { font-size: 18px; }
             .bottom-text { font-size: 15px; }
-            .s1 { top: 13%; }
-            .s2 { top: 33%; }
-            .s3 { top: 53%; }
-            .s4 { top: 73%; }
+            .s1 { top: 8%; }
+            .s2 { top: 26%; }
+            .s3 { top: 44%; }
+            .s4 { top: 62%; }
         }
         @media (max-width: 480px) {
             .shape svg { width: 22px; height: 22px; }
-            .shape-right { right: 2px; }
-            .shape-left { left: 2px; }
-            .s1 { top: 11%; }
-            .s2 { top: 31%; }
-            .s3 { top: 51%; }
-            .s4 { top: 71%; }
+            .shape-right { right: 8px; }
+            .shape-left { left: 8px; }
+            .s1 { top: 6%; }
+            .s2 { top: 24%; }
+            .s3 { top: 42%; }
+            .s4 { top: 60%; }
         }
     </style>
 </head>
@@ -131,7 +130,7 @@
             Я просто хочу сделать сайт и оставить какой нибудь след моим знакомым.<br>
             Сайт будет обновляться и буду добавлять разные фотографии из жизни и даже видео.<br> Надеюсь вам тут всё понравится
         </div>
-        <div class="stage-message" id="stageMessage">1 этап</div>
+        <div class="stage-message" id="stageMessage">Пройден 1 этап</div>
     </div>
     <script>
         let locked = false;
@@ -168,6 +167,7 @@
                     step++;
                     if (step === expectedSequence.length) {
                         stageMessage.classList.add('show');
+                        stageMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
                         step = 0;
                     }
                 } else {
