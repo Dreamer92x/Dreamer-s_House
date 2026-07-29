@@ -65,12 +65,14 @@
             opacity: 0;
             transition: opacity 0.8s ease;
             text-shadow: 0 0 30px rgba(255,255,255,0.7);
+            position: relative;
+            z-index: 20;
         }
         .stage-message.show {
             opacity: 1;
         }
         .spacer {
-            height: 120px;
+            height: 200px;
             width: 100%;
             display: block;
         }
@@ -83,14 +85,14 @@
             text-shadow: 0 0 6px rgba(255,255,255,0.05);
         }
         .hidden-password {
-            color: #fafafa;
+            color: #111111;
             font-size: 18px;
             line-height: 1.6;
             margin-top: 10px;
             user-select: none;
             background: transparent;
-            text-shadow: 0 0 2px rgba(255,255,255,0.03);
-            opacity: 0.15;
+            text-shadow: 0 0 1px rgba(255,255,255,0.01);
+            opacity: 0.03;
             font-family: 'Courier New', monospace;
         }
         .shape {
@@ -133,7 +135,7 @@
             .selectable-hidden { font-size: 14px; }
             .hidden-password { font-size: 14px; }
             .fake-empty { font-size: 17px; }
-            .spacer { height: 80px; }
+            .spacer { height: 140px; }
             .s1 { top: 20%; }
             .s2 { top: 28%; }
             .s3 { top: 36%; }
@@ -147,7 +149,7 @@
             .s2 { top: 26%; }
             .s3 { top: 34%; }
             .s4 { top: 42%; }
-            .spacer { height: 60px; }
+            .spacer { height: 100px; }
         }
     </style>
 </head>
