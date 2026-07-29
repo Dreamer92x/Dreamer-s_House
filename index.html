@@ -83,7 +83,6 @@
             width: 40px;
             height: 40px;
             pointer-events: none;
-            transition: fill 0.2s;
         }
         .shape svg rect,
         .shape svg circle,
@@ -163,7 +162,7 @@
         let stageCompleted = false;
         const expectedSequence = ['left-diamond', 'right-triangle', 'right-circle', 'left-square'];
         const stageMessage = document.getElementById('stageMessage');
-        let animationTimeout = null;
+        let animationTimeouts = {};
 
         function animateShape(shape) {
             const svg = shape.querySelector('svg');
@@ -174,12 +173,13 @@
                 originalColors.push(el.getAttribute('fill'));
                 el.setAttribute('fill', '#333333');
             });
-            if (animationTimeout) clearTimeout(animationTimeout);
-            animationTimeout = setTimeout(() => {
+            const id = shape.dataset.id;
+            if (animationTimeouts[id]) clearTimeout(animationTimeouts[id]);
+            animationTimeouts[id] = setTimeout(() => {
                 elements.forEach((el, index) => {
                     el.setAttribute('fill', originalColors[index] || 'white');
                 });
-                animationTimeout = null;
+                delete animationTimeouts[id];
             }, 2000);
         }
 
