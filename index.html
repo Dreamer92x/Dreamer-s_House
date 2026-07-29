@@ -31,7 +31,7 @@
             text-shadow: 0 0 8px rgba(255,255,255,0.05);
         }
         .invisible-text {
-            color: #ffffff;
+            color: #fafafa;
             font-size: 18px;
             font-family: 'Courier New', monospace;
             letter-spacing: 2px;
@@ -39,7 +39,7 @@
             user-select: none;
             background: transparent;
             text-shadow: 0 0 2px rgba(255,255,255,0.03);
-            opacity: 0.99;
+            opacity: 0.15;
             line-height: 1.6;
         }
         .bottom-text {
@@ -65,10 +65,15 @@
         .stage-message.show {
             opacity: 1;
         }
+        .spacer {
+            height: 120px;
+            width: 100%;
+            display: block;
+        }
         .fake-empty {
             font-size: 20px;
             color: #ffffff;
-            margin-top: 80px;
+            margin-top: 20px;
             letter-spacing: 2px;
             font-weight: 300;
             text-shadow: 0 0 6px rgba(255,255,255,0.05);
@@ -121,8 +126,9 @@
             .main-text { font-size: 18px; }
             .bottom-text { font-size: 15px; }
             .invisible-text { font-size: 14px; }
-            .fake-empty { font-size: 17px; margin-top: 60px; }
+            .fake-empty { font-size: 17px; }
             .hidden-message { font-size: 15px; }
+            .spacer { height: 80px; }
             .s1 { top: 20%; }
             .s2 { top: 28%; }
             .s3 { top: 36%; }
@@ -136,6 +142,7 @@
             .s2 { top: 26%; }
             .s3 { top: 34%; }
             .s4 { top: 42%; }
+            .spacer { height: 60px; }
         }
     </style>
 </head>
@@ -177,7 +184,7 @@
             Сайт будет обновляться и буду добавлять разные фотографии из жизни и даже видео.<br> Надеюсь вам тут всё понравится
         </div>
         <div class="stage-message" id="stageMessage">Пройден 1 этап</div>
-        
+        <div class="spacer"></div>
         <div class="fake-empty">Тут ничего нету</div>
         <div class="hidden-message">Некоторые буквы порой очень боятся света. Думаю этот проект будет интересным</div>
     </div>
