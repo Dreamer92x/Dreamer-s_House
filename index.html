@@ -5,18 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dreamer's_House</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             background: #0a0a0a;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: 'Times New Roman', Times, serif;
+            font-family: 'Georgia', 'Times New Roman', serif;
             padding: 20px;
             position: relative;
         }
@@ -32,6 +28,9 @@
             font-size: 22px;
             line-height: 1.8;
             margin-bottom: 40px;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+            text-shadow: 0 0 8px rgba(255,255,255,0.05);
         }
         .bottom-text {
             color: #ffffff;
@@ -39,108 +38,78 @@
             line-height: 1.6;
             max-width: 700px;
             margin: 0 auto;
+            font-weight: 300;
+            letter-spacing: 0.2px;
+            text-shadow: 0 0 6px rgba(255,255,255,0.04);
         }
-
-        /* ФИГУРЫ */
         .shape {
             position: fixed;
             z-index: 0;
-            pointer-events: none;
+            pointer-events: auto;
             user-select: none;
-            opacity: 0.9;
+            cursor: pointer;
+            transition: none;
         }
-        /* Правая сторона — квадрат, круг, ромб, треугольник */
-        .shape-right {
-            right: 20px;
-        }
-        /* Левая сторона — ромб, треугольник, квадрат, круг */
-        .shape-left {
-            left: 20px;
-        }
-
-        /* Размеры и позиции */
         .shape svg {
             display: block;
             width: 40px;
             height: 40px;
         }
+        .shape-right { right: 6px; }
+        .shape-left { left: 6px; }
+        .s1 { top: 15%; }
+        .s2 { top: 35%; }
+        .s3 { top: 55%; }
+        .s4 { top: 75%; }
 
-        .s1 { top: 10%; }
-        .s2 { top: 30%; }
-        .s3 { top: 50%; }
-        .s4 { top: 70%; }
-
-        /* Адаптация */
         @media (max-width: 700px) {
             .shape svg { width: 30px; height: 30px; }
-            .shape-right { right: 10px; }
-            .shape-left { left: 10px; }
+            .shape-right { right: 4px; }
+            .shape-left { left: 4px; }
             .main-text { font-size: 18px; }
             .bottom-text { font-size: 15px; }
+            .s1 { top: 13%; }
+            .s2 { top: 33%; }
+            .s3 { top: 53%; }
+            .s4 { top: 73%; }
         }
         @media (max-width: 480px) {
             .shape svg { width: 22px; height: 22px; }
-            .shape-right { right: 6px; }
-            .shape-left { left: 6px; }
-            .s1 { top: 8%; }
-            .s2 { top: 28%; }
-            .s3 { top: 48%; }
-            .s4 { top: 68%; }
+            .shape-right { right: 2px; }
+            .shape-left { left: 2px; }
+            .s1 { top: 11%; }
+            .s2 { top: 31%; }
+            .s3 { top: 51%; }
+            .s4 { top: 71%; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ===== СПРАВА: квадрат, круг, ромб, треугольник ===== -->
-    <!-- 1. Квадрат -->
     <div class="shape shape-right s1">
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <rect x="10" y="10" width="80" height="80" fill="white" />
-        </svg>
+        <svg viewBox="0 0 100 100"><rect x="10" y="10" width="80" height="80" fill="white"/></svg>
     </div>
-    <!-- 2. Круг -->
     <div class="shape shape-right s2">
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="50" cy="50" r="40" fill="white" />
-        </svg>
+        <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="white"/></svg>
     </div>
-    <!-- 3. Ромб -->
     <div class="shape shape-right s3">
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <polygon points="50,10 90,50 50,90 10,50" fill="white" />
-        </svg>
+        <svg viewBox="0 0 100 100"><polygon points="50,10 90,50 50,90 10,50" fill="white"/></svg>
     </div>
-    <!-- 4. Треугольник -->
     <div class="shape shape-right s4">
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <polygon points="50,10 90,90 10,90" fill="white" />
-        </svg>
+        <svg viewBox="0 0 100 100"><polygon points="50,10 90,90 10,90" fill="white"/></svg>
     </div>
 
-    <!-- ===== СЛЕВА: ромб, треугольник, квадрат, круг ===== -->
-    <!-- 1. Ромб -->
     <div class="shape shape-left s1">
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <polygon points="50,10 90,50 50,90 10,50" fill="white" />
-        </svg>
+        <svg viewBox="0 0 100 100"><polygon points="50,10 90,50 50,90 10,50" fill="white"/></svg>
     </div>
-    <!-- 2. Треугольник -->
     <div class="shape shape-left s2">
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <polygon points="50,10 90,90 10,90" fill="white" />
-        </svg>
+        <svg viewBox="0 0 100 100"><polygon points="50,10 90,90 10,90" fill="white"/></svg>
     </div>
-    <!-- 3. Квадрат -->
     <div class="shape shape-left s3">
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <rect x="10" y="10" width="80" height="80" fill="white" />
-        </svg>
+        <svg viewBox="0 0 100 100"><rect x="10" y="10" width="80" height="80" fill="white"/></svg>
     </div>
-    <!-- 4. Круг -->
     <div class="shape shape-left s4">
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="50" cy="50" r="40" fill="white" />
-        </svg>
+        <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="white"/></svg>
     </div>
 
     <div class="container">
@@ -156,5 +125,26 @@
         </div>
     </div>
 
+    <script>
+        let locked = false;
+
+        function darkenShape(svg) {
+            if (locked) return;
+            locked = true;
+            const originalFill = svg.getAttribute('fill');
+            svg.setAttribute('fill', '#555555');
+            setTimeout(() => {
+                svg.setAttribute('fill', originalFill || 'white');
+                locked = false;
+            }, 1500);
+        }
+
+        document.querySelectorAll('.shape svg').forEach(svg => {
+            svg.addEventListener('click', function(e) {
+                darkenShape(this);
+                e.stopPropagation();
+            });
+        });
+    </script>
 </body>
 </html>
