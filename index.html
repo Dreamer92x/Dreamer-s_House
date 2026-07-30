@@ -80,14 +80,14 @@
             text-shadow: 0 0 6px rgba(255,255,255,0.05);
         }
         .hidden-password {
-            color: #050505;
+            color: #030303;
             font-size: 18px;
             line-height: 1.6;
             margin-top: 10px;
             user-select: none;
             background: transparent;
             text-shadow: none;
-            opacity: 0.06;
+            opacity: 0.04;
             font-family: 'Courier New', monospace;
         }
         .shape {
@@ -142,6 +142,12 @@
             transition: opacity 0.8s ease;
             text-shadow: 0 0 30px rgba(255,255,255,0.7);
             text-align: center;
+            pointer-events: auto;
+        }
+        .stage-message a {
+            color: #ffffff;
+            text-decoration: underline;
+            pointer-events: auto;
         }
         .stage-message.show {
             opacity: 1;
@@ -206,7 +212,9 @@
     </div>
 
     <div class="stage-message-wrapper">
-        <div class="stage-message" id="stageMessage">Пройден 1 этап</div>
+        <div class="stage-message" id="stageMessage">
+            <a href="https://example.com" target="_blank">Перейти дальше →</a>
+        </div>
     </div>
 
     <div class="container" id="mainContainer">
