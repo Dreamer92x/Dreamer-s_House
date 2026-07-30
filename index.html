@@ -1,292 +1,269 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dreamer's_House</title>
+    <title>CRITICAL ERROR</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            background: #0a0a0a;
-            min-height: 100vh;
-            font-family: 'Georgia', 'Times New Roman', serif;
-            padding: 20px 20px 200px 20px;
-            position: relative;
-        }
-        .container {
-            max-width: 800px;
-            width: 100%;
-            text-align: center;
-            margin: 60px auto 0;
-            position: relative;
-            z-index: 1;
-            transition: opacity 0.8s ease;
-        }
-        .container.fade-out {
-            opacity: 0;
-            pointer-events: none;
-        }
-        .main-text {
-            color: #ffffff;
-            font-size: 26px;
-            line-height: 1.8;
-            margin-bottom: 40px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            text-shadow: 0 0 8px rgba(255,255,255,0.05);
-        }
-        .selectable-hidden {
-            color: transparent;
-            font-size: 18px;
-            font-family: 'Courier New', monospace;
-            letter-spacing: 1px;
-            margin: 10px 0;
-            user-select: text;
-            background: transparent;
-            text-shadow: none;
-            line-height: 1.6;
-        }
-        .bottom-text {
-            color: #ffffff;
-            font-size: 22px;
-            line-height: 1.7;
-            max-width: 700px;
-            margin: 30px auto 30px;
-            font-weight: 500;
-            letter-spacing: 0.3px;
-            text-shadow: 0 0 6px rgba(255,255,255,0.04);
-        }
-        .third-text {
-            color: #ffffff;
-            font-size: 20px;
-            line-height: 1.7;
-            max-width: 700px;
-            margin: 40px auto 30px;
-            font-weight: 400;
-            letter-spacing: 0.3px;
-            text-shadow: 0 0 6px rgba(255,255,255,0.04);
-        }
-        .spacer {
-            height: 200px;
-            width: 100%;
-            display: block;
-        }
-        .fake-empty {
-            font-size: 20px;
-            color: #ffffff;
-            margin-top: 20px;
-            letter-spacing: 2px;
-            font-weight: 300;
-            text-shadow: 0 0 6px rgba(255,255,255,0.05);
-        }
-        .hidden-password {
-            color: #030303;
-            font-size: 18px;
-            line-height: 1.6;
-            margin-top: 10px;
-            user-select: none;
-            background: transparent;
-            text-shadow: none;
-            opacity: 0.04;
-            font-family: 'Courier New', monospace;
-        }
-        .shape {
-            position: absolute;
-            z-index: 10;
-            pointer-events: auto;
-            user-select: none;
-            cursor: pointer;
-            -webkit-tap-highlight-color: transparent;
-            outline: none;
-            transition: opacity 0.5s;
-        }
-        .shape.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-        .shape svg {
-            display: block;
-            width: 40px;
-            height: 40px;
-            pointer-events: none;
-        }
-        .shape svg rect,
-        .shape svg circle,
-        .shape svg polygon {
-            transition: fill 0.2s;
-        }
-        .shape-right { right: 2px; }
-        .shape-left { left: 2px; }
-        .s1 { top: 22%; }
-        .s2 { top: 30%; }
-        .s3 { top: 38%; }
-        .s4 { top: 46%; }
-        .stage-message-wrapper {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            pointer-events: none;
-            z-index: 100;
-        }
-        .stage-message {
-            color: #ffffff;
-            font-size: 24px;
-            font-weight: bold;
-            letter-spacing: 2px;
-            opacity: 0;
-            transition: opacity 0.8s ease;
-            text-shadow: 0 0 30px rgba(255,255,255,0.7);
-            text-align: center;
-            pointer-events: auto;
-        }
-        .stage-message a {
-            color: #ffffff;
-            text-decoration: underline;
-            pointer-events: auto;
-            word-break: break-all;
-        }
-        .stage-message.show {
-            opacity: 1;
-        }
-        @media (max-width: 700px) {
-            .shape svg { width: 30px; height: 30px; }
-            .shape-right { right: 2px; }
-            .shape-left { left: 2px; }
-            .main-text { font-size: 22px; }
-            .bottom-text { font-size: 19px; }
-            .third-text { font-size: 17px; }
-            .selectable-hidden { font-size: 14px; }
-            .hidden-password { font-size: 14px; }
-            .fake-empty { font-size: 17px; }
-            .spacer { height: 140px; }
-            .s1 { top: 20%; }
-            .s2 { top: 28%; }
-            .s3 { top: 36%; }
-            .s4 { top: 44%; }
-            .stage-message { font-size: 18px; }
-        }
-        @media (max-width: 480px) {
-            .shape svg { width: 22px; height: 22px; }
-            .shape-right { right: 1px; }
-            .shape-left { left: 1px; }
-            .s1 { top: 18%; }
-            .s2 { top: 26%; }
-            .s3 { top: 34%; }
-            .s4 { top: 42%; }
-            .spacer { height: 100px; }
-            .stage-message { font-size: 15px; }
-            .main-text { font-size: 19px; }
-            .bottom-text { font-size: 17px; }
-            .third-text { font-size: 15px; }
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{background:#f5f5f5;min-height:100vh;display:flex;align-items:center;justify-content:center;font-family:'Courier New',monospace;transition:background 1.5s;padding:20px;overflow:hidden}
+        body.dark{background:#0a0a0a}
+        .container{max-width:800px;width:100%;text-align:center;transition:.5s}
+        body.dark .container{color:#fff}
+        .input-area{display:flex;flex-direction:column;align-items:center;gap:20px}
+        .input-area .label{font-family:'Press Start 2P','Determination Mono',monospace;font-size:24px;color:#000;letter-spacing:2px;font-weight:300}
+        body.dark .input-area .label{color:#fff}
+        .input-area input{font-family:'Press Start 2P','Determination Mono',monospace;font-size:36px;font-weight:bold;padding:20px 30px;border:3px solid #000;background:#fff;color:#000;text-align:center;width:400px;max-width:90%;outline:0;letter-spacing:8px;text-transform:uppercase;transition:.3s}
+        body.dark .input-area input{background:#0a0a0a;color:#fff;border-color:#fff}
+        .hidden{display:none!important}
+        .choice-area{margin-top:40px;display:flex;flex-direction:column;align-items:center;gap:30px}
+        .choice-area p{color:#fff;font-size:28px;letter-spacing:4px;text-shadow:0 0 20px rgba(255,255,255,.3);font-family:'Courier New',monospace}
+        .choice-buttons{display:flex;gap:60px;flex-wrap:wrap;justify-content:center}
+        .choice-buttons button{font-family:'Courier New',monospace;font-size:22px;padding:20px 50px;border:2px solid #fff;background:0 0;color:#fff;cursor:pointer;transition:.3s;letter-spacing:3px}
+        .choice-buttons button:hover{background:#fff;color:#000}
+
+        .bsod{position:fixed;top:0;left:0;width:100%;height:100%;background:#0000aa;display:none;flex-direction:column;align-items:center;justify-content:center;padding:20px;z-index:999;font-family:'Courier New',monospace;color:#fff;border:6px solid #000;box-shadow:inset 0 0 40px rgba(0,0,50,0.7);transition:opacity 0.3s ease}
+        .bsod.active{display:flex}
+        .bsod.dim{opacity:0.15;transition:opacity 0.1s ease}
+        .bsod-content{max-width:1000px;width:100%;text-align:left;background:#0000aa;padding:20px 30px;position:relative;overflow:hidden;border:2px solid #000;box-shadow:inset 0 0 20px rgba(0,0,80,0.5)}
+        .bsod-content::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:repeating-linear-gradient(0deg,rgba(255,255,255,0.04) 0px,rgba(255,255,255,0.04) 1px,transparent 1px,transparent 3px);pointer-events:none;animation:scan 0.1s linear infinite}
+        @keyframes scan{0%{transform:translateY(0)}100%{transform:translateY(3px)}}
+        .bsod-content .crt{position:absolute;top:0;left:0;width:100%;height:100%;background:repeating-linear-gradient(0deg,rgba(0,255,255,0.03) 0px,rgba(0,255,255,0.03) 1px,transparent 1px,transparent 2px);pointer-events:none;animation:crtFlicker 0.05s linear infinite}
+        @keyframes crtFlicker{0%{opacity:0.9}50%{opacity:1}100%{opacity:0.9}}
+        .bsod-content .glitch{position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,0.02);pointer-events:none;animation:glitch 0.2s ease infinite}
+        @keyframes glitch{0%{transform:translateX(0)}20%{transform:translateX(-5px)}40%{transform:translateX(5px)}60%{transform:translateX(-3px)}80%{transform:translateX(3px)}100%{transform:translateX(0)}}
+        .bsod-content .title{font-size:36px;font-weight:bold;text-align:center;margin-bottom:15px;letter-spacing:3px;text-transform:uppercase;color:#fff;text-shadow:0 0 20px rgba(255,255,255,0.15);background:rgba(255,255,255,0.03);padding:10px 0;border-bottom:2px solid #4466aa}
+        .bsod-content .err{font-size:17px;color:#aaccff;margin:4px 0;letter-spacing:0.3px;line-height:1.6}
+        .bsod-content .err .hl{background:#fff;color:#0000aa;padding:0 6px;font-weight:bold}
+        .bsod-content .err .blink{animation:blinker .7s step-end infinite;color:#fff}
+        @keyframes blinker{0%,100%{opacity:1}50%{opacity:0}}
+        .bsod-content .dump-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px 20px;font-size:15px;color:#88aaff;margin:10px 0;padding:10px 0;border-top:1px dashed #4466aa;border-bottom:1px dashed #4466aa}
+        .bsod-content .dump-grid .label{color:#aaccff}
+        .bsod-content .dump-grid .value{color:#fff;font-weight:bold}
+        .bsod-content .bar-wrap{background:#001155;border:2px solid #88aaff;height:24px;width:100%;margin:12px 0 6px 0;padding:2px;box-shadow:inset 0 0 20px rgba(0,0,50,0.8)}
+        .bsod-content .bar{background:#fff;height:100%;width:0%;animation:progress 55s linear forwards;box-shadow:0 0 20px rgba(255,255,255,0.3)}
+        @keyframes progress{0%{width:0%}100%{width:100%}}
+        .bsod-content .footer{margin-top:20px;font-size:15px;color:#88aaff;text-align:center;border-top:2px solid #4466aa;padding-top:16px;letter-spacing:0.5px;line-height:1.6}
+        .bsod-content .footer .code{color:#fff;background:#0000aa;padding:2px 14px;border:2px solid #88aaff;font-weight:bold;font-size:18px;display:inline-block}
+        .bsod-content .footer .panic{color:#ff6666;font-size:16px;font-weight:bold;animation:panicBlink 1s step-end infinite}
+        @keyframes panicBlink{0%,100%{opacity:1}50%{opacity:0.2}}
+        .bsod-content .memory-dump{font-size:14px;color:#88aaff;margin:6px 0;font-family:'Courier New',monospace;background:rgba(0,0,50,0.3);padding:4px 8px;border-left:3px solid #4466aa;animation:memDumpFlicker 0.3s ease infinite}
+        @keyframes memDumpFlicker{0%,100%{opacity:1}50%{opacity:0.6}}
+
+        .bsod-content .mid-flicker{position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0);pointer-events:none;animation:midFlicker 0.15s ease infinite}
+        @keyframes midFlicker{0%,100%{background:rgba(0,0,0,0)}25%{background:rgba(0,0,0,0.05)}50%{background:rgba(0,0,0,0)}75%{background:rgba(0,0,0,0.08)}}
+
+        .linux{position:fixed;top:0;left:0;width:100%;height:100%;background:#000;display:none;flex-direction:column;align-items:center;justify-content:center;z-index:999;font-family:'Courier New',monospace;color:#0f0;padding:30px;border:6px solid #000}.linux.active{display:flex}
+        .linux .term{max-width:900px;width:100%;background:#000;padding:25px 30px;border:2px solid #0f0;box-shadow:0 0 30px rgba(0,255,0,0.1);text-align:left;font-size:16px;line-height:1.8;color:#0f0;max-height:80vh;overflow-y:auto}
+        .linux .term .l{margin:2px 0;opacity:.9}
+
+        .final{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.95);display:none;align-items:center;justify-content:center;z-index:1000;font-family:'Courier New',monospace;color:#fff;text-align:center;padding:20px;flex-direction:column;gap:30px;animation:fade 1s ease}@keyframes fade{0%{opacity:0}100%{opacity:1}}.final.active{display:flex}.final h1{font-size:42px;letter-spacing:6px;text-shadow:0 0 40px rgba(255,255,255,.5)}.final p{font-size:24px;max-width:600px;line-height:1.8;opacity:.8;letter-spacing:2px}
+        @media(max-width:700px){.input-area .label{font-size:18px}.input-area input{font-size:28px;padding:15px}.choice-buttons button{font-size:18px;padding:15px 30px}.bsod-content{padding:15px}.bsod-content .title{font-size:28px}.bsod-content .err{font-size:14px}.bsod-content .dump-grid{font-size:13px;grid-template-columns:1fr}.linux .term{font-size:13px;padding:15px}.final h1{font-size:30px}.final p{font-size:18px}}
+        @media(max-width:480px){.input-area .label{font-size:14px}.input-area input{font-size:20px;padding:12px}.choice-buttons{gap:20px}.choice-buttons button{font-size:16px;padding:12px 20px}.bsod-content{padding:12px}.bsod-content .title{font-size:22px}.bsod-content .err{font-size:12px}.bsod-content .dump-grid{font-size:11px}.linux .term{font-size:11px;padding:10px}.final h1{font-size:24px}.final p{font-size:16px}}
     </style>
 </head>
 <body>
-    <div class="shape shape-right s1" data-id="right-square">
-        <svg viewBox="0 0 100 100"><rect x="10" y="10" width="80" height="80" fill="white"/></svg>
+<div class="container" id="mainContainer">
+    <div class="input-area" id="inputArea">
+        <div class="label">Enter Password</div>
+        <input type="text" id="bugInput" maxlength="10" autofocus>
     </div>
-    <div class="shape shape-right s2" data-id="right-circle">
-        <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="white"/></svg>
-    </div>
-    <div class="shape shape-right s3" data-id="right-diamond">
-        <svg viewBox="0 0 100 100"><polygon points="50,10 90,50 50,90 10,50" fill="white"/></svg>
-    </div>
-    <div class="shape shape-right s4" data-id="right-triangle">
-        <svg viewBox="0 0 100 100"><polygon points="50,10 90,90 10,90" fill="white"/></svg>
-    </div>
-    <div class="shape shape-left s1" data-id="left-diamond">
-        <svg viewBox="0 0 100 100"><polygon points="50,10 90,50 50,90 10,50" fill="white"/></svg>
-    </div>
-    <div class="shape shape-left s2" data-id="left-triangle">
-        <svg viewBox="0 0 100 100"><polygon points="50,10 90,90 10,90" fill="white"/></svg>
-    </div>
-    <div class="shape shape-left s3" data-id="left-square">
-        <svg viewBox="0 0 100 100"><rect x="10" y="10" width="80" height="80" fill="white"/></svg>
-    </div>
-    <div class="shape shape-left s4" data-id="left-circle">
-        <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="white"/></svg>
-    </div>
-
-    <div class="stage-message-wrapper">
-        <div class="stage-message" id="stageMessage">
-            <a href="https://t.me/+B4GENGBIDeJkZjgy" target="_blank">https://t.me/+B4GENGBIDeJkZjgy</a>
+    <div class="choice-area hidden" id="choiceArea">
+        <p>Which device are you using?</p>
+        <div class="choice-buttons">
+            <button id="pcChoice">Computer</button>
+            <button id="phoneChoice">Phone</button>
         </div>
     </div>
+</div>
 
-    <div class="container" id="mainContainer">
-        <div class="main-text">
-            Привет, возможно вам это скинул мой друг.<br>
-            Надеюсь вы оцените сайт и надеюсь всё вам тут понравится.<br>
-            С уважением Dreamer
+<div class="bsod" id="bsod">
+    <div class="bsod-content">
+        <div class="crt"></div>
+        <div class="glitch"></div>
+        <div class="mid-flicker"></div>
+        <div class="title">CRITICAL ERROR</div>
+        <div class="err"><span class="hl">***</span> STOP: 0x0000007B (0xFFFFF88001234567, 0x0000000000000000, 0x0000000000000000)</div>
+        <div class="err"><span class="hl">***</span> SYSTEM_SERVICE_EXCEPTION</div>
+        <div class="err"><span class="hl">***</span> Fault address: <span class="hl">0xFFFFF800`02A4B3C2</span></div>
+        <div class="err"><span class="hl">***</span> Driver: <span class="hl">ntoskrnl.exe</span> — IRQL_NOT_LESS_OR_EQUAL</div>
+        <div class="err"><span class="hl">***</span> Physical memory: <span class="hl">0%</span> | Page: <span class="hl">0x00000000</span></div>
+        <div class="memory-dump"><span class="blink">►</span> DUMPING PHYSICAL MEMORY: <span id="dumpProgress">0</span>% &nbsp;|&nbsp; Cache: DISABLED &nbsp;|&nbsp; CRC: 0x7A3F</div>
+        <div class="bar-wrap"><div class="bar"></div></div>
+        <div class="dump-grid">
+            <span><span class="label">Call stack:</span> <span class="value">0xFFFFF800`02A4B000</span></span>
+            <span><span class="label">IRQL:</span> <span class="value">0x0000000A</span></span>
+            <span><span class="label">Process:</span> <span class="value">System (PID: 4)</span></span>
+            <span><span class="label">Driver:</span> <span class="value">ntfs.sys</span></span>
+            <span><span class="label">Error code:</span> <span class="value">0x0000007B</span></span>
+            <span><span class="label">Status:</span> <span class="value">CRITICAL ERROR</span></span>
         </div>
-        <div class="selectable-hidden">Некоторые буквы порой очень боятся света. Думаю этот проект будет интересным</div>
-        <div class="bottom-text">
-            Я как уже понятно Dreamer, или мечтатель или же Миша.<br>
-            Я просто хочу сделать сайт и оставить какой нибудь след моим знакомым.<br>
-            Сайт будет обновляться и буду добавлять разные фотографии из жизни и даже видео.<br> Надеюсь вам тут всё понравится
+        <div class="footer">
+            <div class="panic">⚠ SYSTEM HALTED ⚠</div>
+            <span class="code">0x0000007B</span> — Reboot your computer. If the problem persists,<br>
+            contact your system administrator. <span class="blink">▌</span>
         </div>
-        <div class="third-text">
-            У меня из хобби рисование, плаванье, кодинг и так далее. Любимые игры это Ultrakill и майн. Ещё я обожаю гулять, правда сейчас никто не выходит из за жары, так что вот такая у меня жизнь. Я не знаю что мне ещё рассказывать.
-        </div>
-        <div class="spacer"></div>
-        <div class="fake-empty">Тут ничего нету</div>
-        <div class="hidden-password">1.Лев.Ро  2.Прав.Тр 3.Прав.Кр 4.Лев.Кв.</div>
     </div>
+</div>
 
-    <script>
-        let step = 0;
-        let stageCompleted = false;
-        const expectedSequence = ['left-diamond', 'right-triangle', 'right-circle', 'left-square'];
-        const stageMessage = document.getElementById('stageMessage');
-        const mainContainer = document.getElementById('mainContainer');
-        let animationTimeouts = {};
+<div class="linux" id="linuxTerminal">
+    <div class="term" id="terminalContent"></div>
+</div>
 
-        function animateShape(shape) {
-            const svg = shape.querySelector('svg');
-            if (!svg) return;
-            const elements = svg.querySelectorAll('rect, circle, polygon');
-            const originalColors = [];
-            elements.forEach(el => {
-                originalColors.push(el.getAttribute('fill'));
-                el.setAttribute('fill', '#333333');
-            });
-            const id = shape.dataset.id;
-            if (animationTimeouts[id]) clearTimeout(animationTimeouts[id]);
-            animationTimeouts[id] = setTimeout(() => {
-                elements.forEach((el, index) => {
-                    el.setAttribute('fill', originalColors[index] || 'white');
-                });
-                delete animationTimeouts[id];
-            }, 2000);
+<div class="final" id="finalMessage">
+    <h1>STAGE 2 COMPLETED</h1>
+    <p>Any questions?</p>
+</div>
+
+<script>
+    const bugInput = document.getElementById('bugInput');
+    const inputArea = document.getElementById('inputArea');
+    const choiceArea = document.getElementById('choiceArea');
+    const mainContainer = document.getElementById('mainContainer');
+    const bsod = document.getElementById('bsod');
+    const linuxTerminal = document.getElementById('linuxTerminal');
+    const finalMessage = document.getElementById('finalMessage');
+    const dumpProgress = document.getElementById('dumpProgress');
+
+    let isCompleted = false;
+    let dimTriggered = false;
+
+    function checkBug() {
+        const val = bugInput.value.trim().toLowerCase();
+        if (val === 'bug' && !isCompleted) {
+            isCompleted = true;
+            document.body.classList.add('dark');
+            inputArea.classList.add('hidden');
+            choiceArea.classList.remove('hidden');
+            bugInput.blur();
         }
+    }
 
-        document.querySelectorAll('.shape').forEach(shape => {
-            shape.addEventListener('click', function(e) {
-                if (stageCompleted) return;
-                const id = this.dataset.id;
-                animateShape(this);
-                if (id === expectedSequence[step]) {
-                    step++;
-                    if (step === expectedSequence.length) {
-                        stageCompleted = true;
-                        stageMessage.classList.add('show');
-                        document.querySelectorAll('.shape').forEach(el => {
-                            el.classList.add('hidden');
-                        });
-                        mainContainer.classList.add('fade-out');
-                        step = 0;
-                    }
-                } else {
-                    step = 0;
-                    stageMessage.classList.remove('show');
-                }
-            });
-        });
-    </script>
+    bugInput.addEventListener('keydown', e => { if (e.key === 'Enter') checkBug(); });
+    bugInput.addEventListener('input', checkBug);
+
+    function startTimer() {
+        let seconds = 0, maxSec = 55;
+        const interval = setInterval(() => {
+            seconds++;
+            const pct = Math.min(Math.round((seconds / maxSec) * 100), 100);
+            if (dumpProgress) dumpProgress.textContent = pct;
+            if (seconds >= maxSec) {
+                clearInterval(interval);
+                finalMessage.classList.add('active');
+                bsod.classList.remove('active');
+                linuxTerminal.classList.remove('active');
+            }
+        }, 1000);
+    }
+
+    function triggerDim() {
+        if (dimTriggered) return;
+        dimTriggered = true;
+        setTimeout(() => {
+            bsod.classList.add('dim');
+            setTimeout(() => {
+                bsod.classList.remove('dim');
+            }, 5000);
+        }, 3000);
+    }
+
+    function generateLinuxLogs() {
+        const lines = [
+            '[    0.000000] Linux version 5.15.0-86-generic (root@builder) #96-Ubuntu SMP',
+            '[    0.001234] BIOS-provided physical RAM map: [mem 0x0000000000000000-0x000000000009FFFF] usable',
+            '[    0.002345] smpboot: CPU0: Intel(R) Core(TM) i7-8700K CPU @ 3.70GHz',
+            '[    0.003456] smpboot: Booting 1 CPU, 2 CPUs, 3 CPUs, 4 CPUs, 5 CPUs, 6 CPUs',
+            '[    0.004567] PCI: Using configuration type 1 for base access',
+            '[    0.005678] mtrr: your CPUs had inconsistent fixed MTRR settings',
+            '[    0.006789] Kernel command line: BOOT_IMAGE=/boot/vmlinuz-5.15.0-86-generic',
+            '[    0.007890] Initializing cgroup subsys cpuset, cpu, cpuacct',
+            '[    0.009012] CPU: Physical Processor ID: 0, Processor Core ID: 0',
+            '[    0.010123] memory: 0x0000000000000000 - 0x000000007FFFFFFF (usable)',
+            '[    0.011234] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=8, Nodes=1',
+            '[    0.012345] ftrace: allocating 45678 entries in 178 pages',
+            '[    0.013456] rcu: Hierarchical RCU implementation. Restricting CPUs from NR_CPUS=512 to nr_cpu_ids=8',
+            '[    0.014567] NR_IRQS: 1664, nr_irqs: 1024, preallocated irqs: 16',
+            '[    0.015678] Console: colour dummy device 80x25',
+            '[    0.016789] printk: console [tty0] enabled',
+            '[    0.017890] ACPI: Core revision 20210730',
+            '[    0.019012] clocksource: hpet: mask: 0xFFFFFFFF max_cycles: 0xFFFFFFFF',
+            '[    0.020123] APIC: Switch to symmetric I/O mode setup',
+            '[    0.021234] DMAR: Host address width 39, DRHD base: 0x00000000FE000000',
+            '[    0.022345] PCI: Using host bridge windows from ACPI',
+            '[    0.023456] ACPI: Enabled 8 GPEs in block 00 to 3F',
+            '[    0.024567] cryptd: max_cpu_qlen set to 1000',
+            '[    0.025678] AVX2 version of gcm_enc/dec engaged',
+            '[    0.026789] AES CTR mode by8 optimization enabled',
+            '[    0.027890] Block layer SCSI generic (bsg) driver version 0.4 loaded',
+            '[    0.029012] io scheduler mq-deadline, kyber, bfq registered',
+            '[    0.030123] pcieport 0000:00:1c.0: PME, AER, DPC enabled with IRQ 120',
+            '[    0.031234] Serial: 8250/16550 driver, 4 ports, IRQ sharing enabled',
+            '[    0.032345] Linux agpgart interface v0.103',
+            '[    0.033456] AMD IOMMUv2 driver by Joerg Roedel <jroedel@suse.de>',
+            '[    0.034567] i8042: PNP: PS/2 Controller [PNP0303:PS2K,PNP0f13:PS2M] at 0x60,0x64 irq 1,12',
+            '[    0.035678] serio: i8042 KBD port at 0x60,0x64 irq 1, AUX port at 0x60,0x64 irq 12',
+            '[    0.036789] mousedev: PS/2 mouse device common for all mice',
+            '[    0.037890] rtc_cmos 00:02: RTC can wake from S4, registered as rtc0',
+            '[    0.039012] device-mapper: uevent: version 1.0.3, ioctl: 4.45.0 initialised',
+            '[    0.040123] platform eisa.0: Probing EISA bus 0, Cannot allocate resource for mainboard',
+            '[    0.041234] intel_pstate: Intel P-state driver initializing, HWP enabled',
+            '[    0.042345] ledtrig-cpu: registered to indicate activity on CPUs',
+            '[    0.043456] EFI Variables Facility v0.08 2004-May-17',
+            '[    0.044567] NET: Registered PF_INET protocol family',
+            '[    0.045678] IP idents hash table entries: 262144 (order: 9, 2097152 bytes)',
+            '[    0.046789] TCP established hash table entries: 131072 (order: 8, 1048576 bytes)',
+            '[    0.047890] UDP hash table entries: 16384 (order: 6, 262144 bytes)',
+            '[    0.049012] NET: Registered PF_UNIX/PF_LOCAL protocol family',
+            '[    0.050123] RPC: Registered named UNIX socket, udp, tcp transport modules',
+            '[    0.051234] PCI: CLS 64 bytes, default 64',
+            '[    0.052345] Trying to unpack rootfs image as initramfs... Freeing initrd memory: 123456K',
+            '[    0.053456] Initialise system trusted keyrings, Key type blacklist registered',
+            '[    0.054567] workingset: timestamp_bits=36 max_order=22 bucket_order=0',
+            '[    0.055678] zbud: loaded, squashfs: version 4.0, fuse: init (API version 7.34)',
+            '[    0.056789] integrity: Platform Keyring initialized, Key type asymmetric registered',
+            '[    0.057890] Asymmetric key parser x509 registered'
+        ];
+        let i = 0;
+        const interval = setInterval(() => {
+            if (i < lines.length) {
+                const div = document.createElement('div');
+                div.className = 'l';
+                div.textContent = lines[i];
+                document.getElementById('terminalContent').appendChild(div);
+                document.getElementById('terminalContent').scrollTop = document.getElementById('terminalContent').scrollHeight;
+                i++;
+            } else {
+                clearInterval(interval);
+                const last = document.createElement('div');
+                last.className = 'l';
+                last.style.animation = 'blink 1s step-end infinite';
+                last.textContent = 'root@system:~# _';
+                document.getElementById('terminalContent').appendChild(last);
+            }
+        }, 80);
+    }
+
+    document.getElementById('pcChoice').addEventListener('click', () => {
+        if (isCompleted) {
+            bsod.classList.add('active');
+            choiceArea.classList.add('hidden');
+            triggerDim();
+            startTimer();
+        }
+    });
+
+    document.getElementById('phoneChoice').addEventListener('click', () => {
+        if (isCompleted) {
+            linuxTerminal.classList.add('active');
+            choiceArea.classList.add('hidden');
+            generateLinuxLogs();
+            startTimer();
+        }
+    });
+
+    window.addEventListener('load', () => bugInput.focus());
+</script>
 </body>
 </html>
